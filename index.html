@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <button id="login">login</button>
-    <script type="module" src="/main.js"></script>
-  </body>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body id="register-form-body">
+<form id="register-form" class="box">
+    <h1>Register</h1>
+    <input type="text" id="firstname" name="firstname" placeholder="First name">
+    <input type="text" id="lastname" name="lastname" placeholder="Last name">
+    <input type="text" id="email" name="email" placeholder="Email">
+    <input type="password" id="password" name="password" placeholder="Password">
+    <input type="submit" id="register" name="submit" value="Register">
+    <h4>Member?</h4><a id="link" href="./src/user/Login/loginPage.html">Log In</a>
+</form>
+<script type="module" src="src/user/Register/userRegister.js"></script>
+</body>
+
 </html>
