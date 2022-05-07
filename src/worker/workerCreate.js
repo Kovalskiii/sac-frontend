@@ -1,4 +1,9 @@
-import { queryWorkerCancelRegisterMode, queryWorkerCreate } from "./queries";
+import {
+  queryWorkerCancelRegisterMode,
+  queryWorkerCreate,
+  queryWorkerGetFingerprintData,
+  queryWorkerGetRfidData
+} from "./queries";
 import pkg from 'lodash';
 const { get } = pkg;
 
@@ -63,5 +68,29 @@ const workerCreateCancel = () => {
     });
 
   document.location='workerlist.html';
+}
+
+document.querySelector('#getRfid').addEventListener('click', () => getRfid());
+
+const getRfid = () => {
+  queryWorkerGetRfidData()
+    .then((data) => {
+      console.log(data.message);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+document.querySelector('#getFingerprint').addEventListener('click', () => getFingerprintId());
+
+const getFingerprintId = () => {
+  queryWorkerGetFingerprintData()
+    .then((data) => {
+      console.log(data.message);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
