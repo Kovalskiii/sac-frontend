@@ -1,23 +1,27 @@
-import { queryWorkerCancelRegisterMode, queryWorkerCreate, queryWorkerSetRegisterMode } from "./queries";
+import { queryWorkerCancelRegisterMode, queryWorkerCreate } from "./queries";
 import pkg from 'lodash';
-const { getData } = pkg;
+const { get } = pkg;
 
-document.querySelector('#submit').addEventListener('submit', () => workerCreateSubmit());
+document.querySelector('#worker-create-form').addEventListener('submit', (e) => workerCreateSubmit(e));
 
-const workerCreateSubmit = () => {
-  const photo = document.querySelector('#photo').value;
+const workerCreateSubmit = (e) => {
+  e.preventDefault();
+
+  const photo = document.querySelector('#uploadImage').files[0];
   const firstName = document.querySelector('#firstName').value;
   const lastName = document.querySelector('#lastName').value;
   const rfid = document.querySelector('#rfid').value;
-  const fingerprint = document.querySelector('#fingerprint').value;
+  const fingerprintId = document.querySelector('#fingerprint').value;
+
+  console.log(photo)
 
   const payload = {
     data: {
-      photo : `${photo}`,
+      photo: photo,
       firstName: `${firstName}`,
       lastName: `${lastName}`,
       rfid: `${rfid}`,
-      fingerprint: `${fingerprint}`
+      fingerprintId: `${fingerprintId}`
     }
   }
 
@@ -28,15 +32,22 @@ const workerCreateSubmit = () => {
           console.log(data.message);
         })
         .catch((error) => {
-          console.log(error.response.data.message);
+          console.log(error);
         });
-      console.log(data.message);
+      if (data.success) {
+        alert(data.message);
+        console.log(data.message);
+        document.location = 'workerlist.html'
+      }
+      else {
+        alert(data.response.data.message);
+        console.log(data.response.data.message);
+        document.location = 'workerlist.html'
+      }
     })
     .catch((error) => {
-      console.log(error.response.data.message);
+      console.log(error);
     });
-
-  document.location='workerlist.html';
 }
 
 document.querySelector('#cancel').addEventListener('click', () => workerCreateCancel());
@@ -48,7 +59,7 @@ const workerCreateCancel = () => {
       console.log(data.message);
     })
     .catch((error) => {
-      console.log(error.response.data.message);
+      console.log(error);
     });
 
   document.location='workerlist.html';

@@ -1,6 +1,6 @@
 import axios from "axios";
 import pkg from 'lodash';
-const { getData } = pkg;
+const { get } = pkg;
 
 export let server = 'https://sac-back-end.herokuapp.com';
 
@@ -14,9 +14,9 @@ function getHeaders(type) {
 }
 
 const successHandler = (res) => {
-  // const messageTitle = getData(res, 'data.message');
-  // const messageDescription = getData(res, 'data.message');
-  // const show = getData(res, 'data.show', false);
+  // const messageTitle = get(res, 'data.message');
+  // const messageDescription = get(res, 'data.message');
+  // const show = get(res, 'data.show', false);
   //
   // if (show) {
   //   notification.success({
@@ -28,11 +28,11 @@ const successHandler = (res) => {
 };
 
 const failHandler = (res) => {
-  // const messageTitle = getData(res, 'response.data.message', '');
-  // const isFail = getData(res, 'response.data.fail', true);
-  // const statusCode = getData(res, 'response.status', '');
-  // const statusText = getData(res, 'response.statusText', '');
-  // const show = getData(res, 'response.data.show', true);
+  // const messageTitle = get(res, 'response.data.message', '');
+  // const isFail = get(res, 'response.data.fail', true);
+  // const statusCode = get(res, 'response.status', '');
+  // const statusText = get(res, 'response.statusText', '');
+  // const show = get(res, 'response.data.show', true);
   //
   // if (statusCode === 500) {
   //   notification.error({
@@ -54,7 +54,7 @@ const failHandler = (res) => {
 };
 
 
-function httpMethod({ method, url, data, type = '' }) {
+function httpMethod({ method, url, data, type=''}) {
   return axios({
     method,
     url: server + url,
@@ -71,18 +71,18 @@ function httpMethod({ method, url, data, type = '' }) {
     });
 }
 
-export function get({ url, data }) {
+export function Get({ url, data }) {
   return httpMethod({ method: 'get', url, data });
 }
 
-export function post({ url, data, type }) {
+export function Post({ url, data, type }) {
   return httpMethod({ method: 'post', url, data, type });
 }
 
-export function patch({ url, data, type }) {
+export function Patch({ url, data, type }) {
   return httpMethod({ method: 'patch', url, data, type });
 }
 
-export function del({ url, data }) {
+export function Del({ url, data }) {
   return httpMethod({ method: 'delete', url, data });
 }

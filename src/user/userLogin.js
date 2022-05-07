@@ -1,10 +1,12 @@
 import { queryUserLogin } from "./queries";
 import pkg from 'lodash';
-const { getData } = pkg;
+const { get } = pkg;
 
-document.querySelector('#login').addEventListener('submit', async () => await userLogin());
+document.querySelector('#login-form').addEventListener('submit', (e) => userLogin(e));
 
-const userLogin = () => {
+const userLogin = (e) => {
+  e.preventDefault();
+
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
 
@@ -14,22 +16,28 @@ const userLogin = () => {
       password: `${password}`
     }
   }
+
   queryUserLogin(payload)
     .then((data) => {
+      const userId = get(data, 'userId', '');
+      const token = get(data, 'token', '');
+      const name = get(data, 'user.name', '');
 
-      const userId = getData(data, 'userId', '');
-      const token = getData(data, 'token', '');
-      const name = getData(data, 'name', '');
-
-      if (name && token && userId && data.success) {
+      if (name && token && userId) {
         localStorage.setItem('token', token);
         localStorage.setItem('userId', userId);
-        document.location='dashboard.html';
+
+        document.location = 'dashboard.html';
+        console.log("Success", data);
+        console.log(data.message);
       }
-      console.log(data.message);
+      else {
+        document.location = 'loginPage.html';
+        console.log(data.response.data.message);
+      }
     })
     .catch((error) => {
-      console.log(error.response.data.message);
+      console.log(error);
     });
 }
 

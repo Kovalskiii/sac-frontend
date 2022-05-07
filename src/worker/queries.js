@@ -1,41 +1,43 @@
-import { del, get, patch, post } from "../httpMethods";
+import { Del, Get, Patch, Post } from "../httpMethods";
 
 export async function queryWorkerCreate(payload) {
-  return post({ url: '/worker/create', data: payload.data });
+  const contentType = 'multipart/form-data';
+  return Post({ url: '/worker/create', data: payload.data, type: contentType });
 }
 
 export async function queryWorkerDeleteById(payload) {
-  return del({ url: `/worker/delete/${payload.workerId}` });
+  return Del({ url: `/worker/delete/${payload.workerId}` });
 }
 
 export async function queryWorkerUpdateById(payload){
-  return patch({ url: `/worker/update/${payload.workerId}`, data: payload.data });
+  const contentType = 'multipart/form-data';
+  return Patch({ url: `/worker/update/${payload.workerId}`, data: payload.data, type: contentType });
 }
 
 export async function queryWorkerGetAllList() {
-  return get({ url: '/worker/getAll' });
+  return Get({ url: '/worker/getAll' });
 }
 
 export async function queryWorkerGetById(payload) {
-  return get({ url: `/worker/get/${payload.workerId}` });
+  return Get({ url: `/worker/get/${payload.workerId}` });
 }
 
 export async function queryWorkerSearchByName(payload) {
-  return post({ url: '/worker/searchByName', data: payload.data });
+  return Post({ url: '/worker/searchByName', data: payload.data });
 }
 
 export async function queryWorkerGetFingerprintData() {
-  return get({ url: '/worker/get/fingerprint/data' });
+  return Get({ url: '/worker/get/fingerprint/data' });
 }
 
 export async function queryWorkerGetRfidData() {
-  return get({ url: '/worker/get/rfid/data' });
+  return Get({ url: '/worker/get/rfid/data' });
 }
 
 export async function queryWorkerSetRegisterMode() {
-  return post({ url: '/worker/set/registerMode' });
+  return Post({ url: '/worker/set/registerMode' });
 }
 
 export async function queryWorkerCancelRegisterMode() {
-  return post({ url: '/worker/cancel/registerMode' });
+  return Post({ url: '/worker/cancel/registerMode' });
 }

@@ -4,12 +4,11 @@ import {
   queryWorkerSetRegisterMode
 } from "./queries";
 import pkg from 'lodash';
-const { getData } = pkg;
+const { get } = pkg;
 
 document.querySelector('#addWorkerBtn').addEventListener('click', () => workerAdd());
 
 const workerAdd = async () => {
-  //
   document.location='workerCreate.html';
 
   await queryWorkerSetRegisterMode()

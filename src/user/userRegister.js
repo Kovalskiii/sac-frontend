@@ -1,8 +1,10 @@
 import { queryUserRegister } from "./queries";
 
-document.querySelector('#register-form').addEventListener('submit', async () => await userRegister());
+document.querySelector('#register-form').addEventListener('submit', (e) => userRegister(e));
 
-const userRegister = () => {
+const userRegister = (e) => {
+  e.preventDefault();
+
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
   const firstName = document.querySelector('#firstname').value;
@@ -20,15 +22,16 @@ const userRegister = () => {
   queryUserRegister(payload)
     .then((data) => {
       if (data.success) {
-        document.location='dashboard.html'
+        document.location = 'loginPage.html'
+        console.log(data.message);
       }
       else {
-        document.location='index.html'
+        document.location = 'index.html'
+        console.log(data.response.data.message);
       }
-      console.log(data.message);
     })
     .catch((error) => {
-      console.log(error.response.data.message);
+      console.log(error);
     });
 }
 

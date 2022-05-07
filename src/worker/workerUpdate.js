@@ -1,17 +1,19 @@
-import { queryWorkerCancelRegisterMode, queryWorkerCreate, queryWorkerUpdateById } from "./queries";
+import { queryWorkerCancelRegisterMode, queryWorkerUpdateById } from "./queries";
 import pkg from 'lodash';
-const { getData } = pkg;
+const { get } = pkg;
 
-document.querySelector('#submit').addEventListener('submit', () => workerUpdateSubmit());
+document.querySelector('#worker-update-form').addEventListener('submit', (e) => workerUpdateSubmit(e));
 
-const workerUpdateSubmit = () => {
-  const photo = document.querySelector('#photo').value;
+const workerUpdateSubmit = (e) => {
+  e.preventDefault();
+
+  const photo = document.querySelector('#uploadImage').files[0];
   const firstName = document.querySelector('#firstName').value;
   const lastName = document.querySelector('#lastName').value;
   const rfid = document.querySelector('#rfid').value;
-  const fingerprint = document.querySelector('#fingerprint').value;
+  const fingerprintId = document.querySelector('#fingerprint').value;
 
-  const workerId = 0; //must be get from workers list
+  const workerId = '4G9l5sKuzzVLDq6kIvKs'; //must be get from workers list
 
   const payload = {
     workerId: `${workerId}`,
@@ -19,11 +21,11 @@ const workerUpdateSubmit = () => {
       firstName: `${firstName}`,
       lastName: `${lastName}`,
       rfid: `${rfid}`,
-      fingerprint: `${fingerprint}`
+      fingerprintId: `${fingerprintId}`
     }
   }
   if (photo) {
-    payload.data.photo = `${photo}`;
+    payload.data.photo = photo;
   }
 
   queryWorkerUpdateById(payload)
@@ -35,13 +37,20 @@ const workerUpdateSubmit = () => {
         .catch((error) => {
           console.log(error.response.data.message);
         });
-      console.log(data.message);
+      if (data.success) {
+        alert(data.message);
+        console.log(data.message);
+        document.location = 'workerlist.html'
+      }
+      else {
+        alert(data.response.data.message);
+        console.log(data.response.data.message);
+        document.location = 'workerlist.html'
+      }
     })
     .catch((error) => {
-      console.log(error.response.data.message);
+      console.log(error);
     });
-
-  document.location='workerlist.html';
 }
 
 document.querySelector('#cancel').addEventListener('click', () => workerUpdateCancel());
@@ -52,9 +61,8 @@ const workerUpdateCancel = () => {
       console.log(data.message);
     })
     .catch((error) => {
-      console.log(error.response.data.message);
+      console.log(error);
     });
-
 
   document.location='workerlist.html';
 }
