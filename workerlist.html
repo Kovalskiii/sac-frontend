@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <script src="https://kit.fontawesome.com/2362d84dc0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="workerlist.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="module" src="src/worker/worker.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <main>
+        <!-- Search bar -->
+        <div class="search">
+            <div>
+                <button id="addWorkerBtn" style="margin-left: -85%;">Add Worker</button>
+                <input type="search" id="mySearch" name="q" placeholder="Search by name..."
+                       aria-label="Search through site content" style="margin-left: 50%;">
+                <button id="searchWorker">Search</button>
+            </div>
+        </div>
+
+
+        <section class="attendance">
+            <div class="attendance-list">
+
+                <img  src="user.jpg" >
+
+                <div id="nume">
+                    <h4 style="margin-left: 20%;">First name: Danu</h4>
+                    <h4 style="margin-left: 40%;margin-left: 3%;" >Last name: Danu</h4>
+                </div>
+                <h4 style="margin-left: 20%;">RFID Data: asdfgdsaRWTET34ERA2334 </h4>
+                <h4 style="margin-left: 20%;">Finger print Data:3QRASGRZSA4t3arhr4TARt4ag</h4>
+                <hr>
+
+                <a href="workerUpdate.html" class="button2" >Update</a>
+                <a href="#" id="deleteWorkerBtn" class="button3">Delete</a>
+
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+</body>
+
+</html>

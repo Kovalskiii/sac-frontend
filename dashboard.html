@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <script src="https://kit.fontawesome.com/2362d84dc0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="dashboard.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="module" src="src/user/userLogout.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <nav>
+        <ul>
+            <li><a href="#" class="logo">
+                <img src="\logo.jpg">
+                <span class="nav-item">Dashboard</span>
+            </a></li>
+            <li><a href="#">
+                <i class="fas fa-home"></i>
+                <span class="nav-item">Home</span>
+            </a></li>
+            <li><a href="" >
+                <i class="fas fa-user"></i>
+                <span class="nav-item"><a href="workerlist.html" style="margin-top: -40px; margin-left: 27px;"> Workers</a></span>
+                </a></li>
+
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Dashboard</h1>
+        <div id="lg">
+            <ul>
+                <li><a href="loginPage.html" class="logout" id="logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="nav-items">Logout</span>
+                </a></li>
+            </ul>
+        </div>
+        <!-- Search bar -->
+        <div class="search">
+
+
+            <div>
+                <input type="search" id="mySearch" name="q" placeholder="Search by name..."
+                       aria-label="Search through site content">
+                <button>Search</button>
+            </div>
+        </div>
+        <!-- END SERCHBAR  -->
+        <div class="date">
+            <input type="date">
+        </div>
+        <div class="insights">
+            <div class="attend">
+                <div class="midlle">
+                    <div class="left">
+                        <h3>Attendance </h3>
+                        <!-- <h1></h1> -->
+                    </div>
+                    <div class="progres">
+                        <svg>
+                            <circle cx='38' cy='38' r='36'></circle>
+                        </svg>
+                        <div class="number">
+                            <p>90%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <small class="text-muted">Last 24 Hours</small>
+
+            </div>
+            <div class="late">
+                <div class="midlle">
+                    <div class="left">
+                        <h3>Late </h3>
+                        <!-- <h1></h1> -->
+                    </div>
+                    <div class="progres">
+                        <svg>
+                            <circle cx='38' cy='38' r='36'></circle>
+                        </svg>
+                        <div class="number">
+                            <p>85%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <small class="text-muted">Last 24 Hours</small>
+
+            </div>
+            <!-- --------------------END OF FIRST GRAPHIC-------------- -->
+            <div class="miss">
+                <div class="midlle">
+                    <div class="left">
+                        <h3>Missing </h3>
+                        <h1></h1>
+                    </div>
+                    <div class="progres">
+                        <svg>
+                            <circle cx='38' cy='38' r='36'></circle>
+                        </svg>
+                        <div class="number">
+                            <p>10%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <small class="text-muted">Last 24 Hours</small>
+
+
+            </div>
+        </div>
+
+        <section class="attendance">
+            <div class="attendance-list">
+                <h1>Attendace List</h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Join Time</th>
+                        <th>Logout Time</th>
+                        <th>Detailes</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="active">
+                        <td>01</td>
+                        <td>DANU</td>
+                        <td>03-12-2022</td>
+                        <td>8:00 AM</td>
+                        <td>8:00 PM</td>
+                        <!-- <td> <button class="button1">VIEW</td> -->
+
+                    </tr>
+                    <tr class="active">
+                        <td>02</td>
+                        <td>ROMA</td>
+                        <td>03-12-2022</td>
+                        <td>8:00 AM</td>
+                        <td>8:00 PM</td>
+
+                    </tr>
+                    <tr class="active">
+                        <td>03</td>
+                        <td>IANUSH</td>
+                        <td>03-12-2022</td>
+                        <td>8:00 AM</td>
+                        <td>8:00 PM</td>
+
+                    </tr>
+                    <tr class="active">
+                        <td>04</td>
+                        <td>VASEA</td>
+                        <td>03-12-2022</td>
+                        <td>8:00 AM</td>
+                        <td>8:00 PM</td>
+
+                    </tr>
+                    <tr class="active">
+                        <td>05</td>
+                        <td>VLAD</td>
+                        <td>03-12-2022</td>
+                        <td>8:00 AM</td>
+                        <td>8:00 PM</td>
+
+                    </tr>
+                    <tr class="active">
+                        <td>06</td>
+                        <td>VLADIMIR</td>
+                        <td>03-12-2022</td>
+                        <td>8:00 AM</td>
+                        <td>8:00 PM</td>
+
+                    </tr>
+                    <!-- <div class="container1"><a href="#"class="button1" id="button1">VIEW</a>
+                    </div> -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!--</a></li>-->
+<!--</main>-->
+<!--</div>-->
+<!-- <div class="popup">
+    <div class="popup-content">
+        <img src="asd.png" alt="close" class="close" style="scale: 100%;">
+        <img src="user.jpg"alt="USER" style="scale: 20%; margin-top:-90px;" >
+        <p style="margin-top:-90px; ">
+       <h4 >First name: Danu </h4>
+       <h4>Last name: Danu</h4>
+       <h4>RFID Data: asdfgdsaRWTET34ERA2334 </h4>
+       <h4 >Finger print Data:3QRASGRZSA4t3arhr4TARt4ag</h4>
+       <h4 style="margin-left: 40%; margin-top: -7%;"></h4>
+        <a href="Update.html" class="button2" >Update</a>
+        <a href="#" class="button3">Delete</a>
+    </div>
+</div>
+<script>
+  document.querySelectorAll('.button1').forEach((item)=>{
+        item.addEventListener('click',
+        ()=>{document.querySelector(".popup").style.display = "flex";});
+    });
+     document.querySelectorAll('.close').forEach((item)=>{
+        item.addEventListener('click',
+        ()=>{document.querySelector(".popup").style.display = "none";});
+    });
+</script> -->
+
+
+</body>
+
+</html>

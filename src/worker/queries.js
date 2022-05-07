@@ -32,10 +32,10 @@ export async function queryWorkerGetRfidData() {
   return get({ url: '/worker/get/rfid/data' });
 }
 
-export async function queryWorkerSetRegisterMode(payload) {
+export async function queryWorkerSetRegisterMode() {
   return post({ url: '/worker/set/registerMode' });
 }
 
-export async function queryWorkerCancelRegisterMode(payload) {
+export async function queryWorkerCancelRegisterMode() {
   return post({ url: '/worker/cancel/registerMode' });
 }

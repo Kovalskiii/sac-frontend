@@ -4,19 +4,19 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="module" src="src/user/userRegister.js"></script>
 </head>
 
 <body id="register-form-body">
-<form id="register-form" class="box">
+  <form id="register-form" class="box">
     <h1>Register</h1>
-    <input type="text" id="firstname" name="firstname" placeholder="First name">
-    <input type="text" id="lastname" name="lastname" placeholder="Last name">
-    <input type="text" id="email" name="email" placeholder="Email">
-    <input type="password" id="password" name="password" placeholder="Password">
+    <input type="text" id="firstname" name="firstname" placeholder="First name" required>
+    <input type="text" id="lastname" name="lastname" placeholder="Last name" required>
+    <input type="text" id="email" name="email" placeholder="Email" required>
+    <input type="password" id="password" name="password" placeholder="Password" required>
     <input type="submit" id="register" name="submit" value="Register">
-    <h4>Member?</h4><a id="link" href="./src/user/Login/loginPage.html">Log In</a>
-</form>
-<script type="module" src="src/user/Register/userRegister.js"></script>
+    <h4>Member?</h4><a id="link" href="loginPage.html">Log In</a>
+ </form>
 </body>
 
 </html>
