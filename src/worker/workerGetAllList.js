@@ -5,7 +5,7 @@ document.querySelector('#getFingerprint').addEventListener('click', () => getFin
 const getFingerprintId = () => {
   queryWorkerGetAllList()
         .then((data) => {
-            console.log(data.message);//din data in html ca tabel
+            console.log(data);//din data in html ca tabel
         })
         .catch((error) => {
             console.log(error);

@@ -75,8 +75,12 @@ document.querySelector('#getRfid').addEventListener('click', () => getRfid());
 const getRfid = () => {
   queryWorkerGetRfidData()
     .then((data) => {
-      document.querySelector('#rfid').value = data;
-      console.log(data.message);//de fct ca id
+      if (data.payload.rfid !== undefined) {
+        document.querySelector('#rfid').value = data.payload.rfid;
+      }
+      else {
+        document.querySelector('#rfid').value = null;
+      }
     })
     .catch((error) => {
       console.log(error);
@@ -88,8 +92,12 @@ document.querySelector('#getFingerprint').addEventListener('click', () => getFin
 const getFingerprintId = () => {
   queryWorkerGetFingerprintData()
     .then((data) => {
-      document.querySelector('#fingerprint').value = data;
-      console.log(data.message);
+      if (data.payload.fingerprintId !== undefined) {
+        document.querySelector('#fingerprint').value = data.payload.fingerprintId;
+      }
+      else {
+        document.querySelector('#fingerprint').value = null;
+      }
     })
     .catch((error) => {
       console.log(error);
