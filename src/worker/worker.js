@@ -9,10 +9,9 @@ const { get } = pkg;
 document.querySelector('#addWorkerBtn').addEventListener('click', () => workerAdd());
 
 const workerAdd = async () => {
-  document.location='workerCreate.html';
-
   await queryWorkerSetRegisterMode()
     .then((data) => {
+      document.location='workerCreate.html';
       console.log(data.message);
     })
     .catch((error) => {
@@ -24,10 +23,9 @@ document.querySelector('#updateWorkerBtn').addEventListener('click', () => worke
 
 const workerUpdate = async () => {
   //
-  document.location='workersUpdate.html';
-
   await queryWorkerSetRegisterMode()
     .then((data) => {
+      document.location='workersUpdate.html';
       console.log(data.message);
     })
     .catch((error) => {

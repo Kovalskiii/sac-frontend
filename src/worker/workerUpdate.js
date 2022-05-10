@@ -64,12 +64,12 @@ const workerUpdateCancel = () => {
   queryWorkerCancelRegisterMode()
     .then((data) => {
       console.log(data.message);
+      document.location='workerlist.html';
     })
     .catch((error) => {
       console.log(error);
+      document.location='workerlist.html';
     });
-
-  document.location='workerlist.html';
 }
 
 document.querySelector('#getRfid').addEventListener('click', () => getRfid());

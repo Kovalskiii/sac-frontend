@@ -61,13 +61,13 @@ const workerCreateCancel = () => {
 
   queryWorkerCancelRegisterMode()
     .then((data) => {
+      document.location='workerlist.html';
       console.log(data.message);
     })
     .catch((error) => {
       console.log(error);
+      document.location='workerlist.html';
     });
-
-  document.location='workerlist.html';
 }
 
 document.querySelector('#getRfid').addEventListener('click', () => getRfid());
