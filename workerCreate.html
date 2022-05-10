@@ -15,30 +15,30 @@
       <form action="#" id="worker-create-form">
         <div class="user-details">
           <div class="input-box">
-            <span class="details">First Name</span>
-            <input type="text" id="firstName" placeholder="First name" required>
+            <label>Firstname<input type="text" id="firstName" placeholder="First name" required></label>
+            <label>Lastname<input type="text" id="lastName" placeholder="Last name" required></label>
           </div>
-          <div class="input-box">
-            <span class="details">Last Name</span>
-            <input type="text" id="lastName" placeholder="Last name" required>
-          </div>
-          <div id="laurentiu1" class="input-box1">
-            <span class="details"></span> <button id="getRfid">GET RFID data</button>
-            <input type="text" id="rfid" placeholder="RFID Data" required>
-          </div>
-          <div id="laurentiu2" class="input-box2">
-            <span class="details"></span> <button id="getFingerprint">GET Fingerprint data</button>
-            <input type="text" id="fingerprint" placeholder="Fingerprint Data" required>
-          </div>
-          <div id="laurentiu3" class="input-box3">
-            <span class="details"><input id="uploadImage" type="file"></span>
 
+          <div class="input-box1">
+            <div class="input-btn">
+              <button type="button" id="getRfid">GET RFID data</button>
+              <input type="text" id="rfid" placeholder="RFID Data" required>
+            </div>
+            <div class="input-btn">
+              <button type="button" id="getFingerprint">GET Fingerprint data</button>
+              <input type="text" id="fingerprint" placeholder="Fingerprint Data" required>
+            </div>
           </div>
+
+          <div class="input-box2">
+            <input id="uploadImage" type="file">
+          </div>
+
         </div>
        
-        <div class="button" >
-          <input type="submit" id="submit" value="Submit">
-          <input type="button" id="cancel" value="Cancel">
+        <div class="button">
+          <button type="submit" id="submit">Submit</button>
+          <button type="button" id="cancel">Cancel</button>
           
         </div>
         <h6 style="color:orange">Note!During worker creation system is in the register mode!</h6>

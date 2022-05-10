@@ -75,7 +75,8 @@ document.querySelector('#getRfid').addEventListener('click', () => getRfid());
 const getRfid = () => {
   queryWorkerGetRfidData()
     .then((data) => {
-      console.log(data.message);
+      document.querySelector('#rfid').value = data;
+      console.log(data.message);//de fct ca id
     })
     .catch((error) => {
       console.log(error);
@@ -87,6 +88,7 @@ document.querySelector('#getFingerprint').addEventListener('click', () => getFin
 const getFingerprintId = () => {
   queryWorkerGetFingerprintData()
     .then((data) => {
+      document.querySelector('#fingerprint').value = data;
       console.log(data.message);
     })
     .catch((error) => {

@@ -48,7 +48,7 @@ const workerSearch = async () => {
 
   await queryWorkerSearchByName(payload)
     .then((data) => {
-      console.log(data.message);
+      console.log(data.message);//anume dupa nume live search
     })
     .catch((error) => {
       console.log(error.response.data.message);
