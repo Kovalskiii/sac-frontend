@@ -25,7 +25,7 @@ const workerUpdate = async () => {
   //
   await queryWorkerSetRegisterMode()
     .then((data) => {
-      document.location='workersUpdate.html';
+      document.location='workerUpdate.html';
       console.log(data.message);
     })
     .catch((error) => {

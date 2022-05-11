@@ -1,12 +1,12 @@
-import {queryWorkerGetAllList, queryWorkerGetFingerprintData} from "./queries.js";
+import { queryWorkerGetAllList } from "./queries.js";
 
 
-document.querySelector('#getFingerprint').addEventListener('click', () => getworkerGEtAllList());
+document.querySelector('#collectDataBtn').addEventListener('click', () => getWorkersList());
 
-const getworkerGEtAllList = () => {
+const getWorkersList = () => {
   queryWorkerGetAllList()
         .then((data) => {
-            console.log(data);//din data in html ca tabel
+            console.log(data.payload);//din data in html ca tabel
         })
         .catch((error) => {
             console.log(error);

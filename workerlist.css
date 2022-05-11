@@ -1,124 +1,40 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    outline: none;
+* {
     border:none;
     text-decoration: none;
-    box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-*
-{
-    margin:0;
-    padding:0;
-    outline:0;
-    appearance: auto;
-    border: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
 
-}
-body
-{
+body {
     background: #dfe9f5;
     color: var(--color-dark);
+}
+
+.container {
     display: flex;
-}
-.container
-{
-    display: flex;
-
-
-
-}
-nav
-{
-    position: relative;
-    top: 0;
-    bottom: 0;
-
-    Left: 0;
-    background: #fff;
-    width: 280px;
-    overflow: hidden;
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 400px;
 }
 
-a{
- display: flex;
-    color: rgb(85, 83, 83);
-    font-size: 13px;
-    display: table;
-    width: 130px;
-    padding: 10px;
-    /*height: relative;*/
-}
-nav.fas
-{
-    position: relative;
-    width: 70px;
-    height: 40px;
-    top: 14px;
-    font-size: 2px;
-    text-align: center;
-}
-
-.nav-item
-{
-
-    top: 12px;
-    margin-left: 10px;
-
-}
-
-/* ---------------MAIN------------------- */
-main
-{
-    margin-top: 1.4rem;
-    margin-left: 25rem;
-}
-
-main .date
-{
-    display: flex;
-    background: var(--color-light);
-    border-radius:var(--card-border-radius-1) ;
-    margin-top: 1rem;
-    padding: 0.5rem 1.6rem;
-    margin-right: 1rem;
-}
-
-main .search
-{
-    margin-left: 26rem;
-}
-.search{
+.search-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-}
-.attendance
-{
-    margin-top: 20px;
-    text-transform: capitalize;
-    height: 50%;
-}
-.attendance-list
-{
-    width: 100%;
-    height: 500%;
-    padding: 10px;
-    margin-top: 10px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 20px 35px rgb(0, 0, 0,0.1);
+    justify-content: center;
+    padding: 20px;
+    margin: 20px;
 }
 
-.search button
-{
+.search-container #mySearch {
+    margin: 0px 20px 0px 160px;
+}
+
+.search-container #addWorkerBtn, .search-container #collectDataBtn {
+    margin: 0px 5px 0px 5px;
+}
+
+.search-container button {
     padding: 6px 20px;
     border-radius: 10px;
     cursor: pointer;
@@ -126,66 +42,111 @@ main .search
     border:1px solid #4AD489;
 }
 
-.search button:hover{
+.search-container button:hover {
     background:#4AD489 ;
     color: #fff;
     transition: 0.5ms;
 }
 
-#updateWorkerBtn
-{
-    margin-top: -11%;
+.workers-list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgb(0, 0, 0,0.1);
+    padding: 10px;
+    margin: 5px 160px 10px 160px;
+    overflow: auto;
+    width: 50%;
+}
+
+.workers-list-item {
+    flex-direction: column;
+    justify-content: space-around;
+    flex-grow: 1;
+    align-items: center;
+    width: 100%;
+}
+
+.workers-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-grow: 1;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+hr {
+    width: 95%;
+    height: 2px;
+    background-color: rgb(0, 0, 0);
+    border-width: 4px;
+}
+
+.worker-photo-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.worker-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: 0px 15px 0px 15px;
+}
+
+.worker-info-container h4 {
+    margin: 5px;
+}
+
+.worker-btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.worker-btn-container #updateWorkerBtn {
     border-radius: 10px;
     transition: 0.5ms;
-    margin-left:75%;
     background:#0800ff ;
     color: #fff;
     font-weight: bold;
+    width: 70px;
+    height: 30px;
+    margin: 10px;
 }
 
-#deleteWorkerBtn:hover{
-    background: #ff0000;
-    color: #fff;
-    transition: 0.5ms;
-}
-
-#updateWorkerBtn:hover{
+.worker-btn-container #updateWorkerBtn:active {
     background: #012098;
     color: #fff;
     transition: 0.5ms;
 }
 
-#deleteWorkerBtn
-{
-    margin-top: 1%;
+.worker-btn-container #deleteWorkerBtn {
     border-radius: 10px;
     transition: 0.5ms;
-    margin-left:75%;
     background:#d44a4a ;
     color: #fff;
     font-weight: bold;
+    width: 70px;
+    height: 30px;
+    margin: 10px;
 }
 
-hr
-{
-    width: 100%;
-    height: 2px;
-    background-color: rgb(0, 0, 0);
-    margin: 20px -5px 0 auto;
-    border-width: 4px;
+.worker-btn-container #deleteWorkerBtn:active {
+    background: #9c2b2b;
+    color: #fff;
+    transition: 0.5ms;
 }
 
-.name {
-    display: flex;
-    flex-direction:column;
 
 
-}
-
-.btn{
-    display: flex;
-    flex-direction: column;
 
 
-}
 
