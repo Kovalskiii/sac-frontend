@@ -14,9 +14,9 @@ body{
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 .container{
-    display: flex;
-    flex-direction : column ;
-    justify-content: flex-start;
+    /*display: flex;*/
+    /*flex-direction : column ;*/
+    /*justify-content: flex-start;*/
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -54,9 +54,9 @@ body{
   /*right: 100%;*/
 }
 .user-details{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: space-around;*/
 }
 
 .input-box {
@@ -67,10 +67,10 @@ body{
 }
 
 .input-box1 {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    justify-content: space-around;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*flex-grow: 1;*/
+    /*justify-content: space-around;*/
 }
 
 .input-btn {
@@ -81,11 +81,11 @@ body{
 }
 
 .input-box2 {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    justify-content: space-around;
-    align-items: center;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*flex-grow: 1;*/
+    /*justify-content: space-around;*/
+    /*align-items: center;*/
 }
 
 .input-box, .input-box1, .input-btn {
@@ -98,13 +98,6 @@ body{
 .user-details .input-box input:valid{
   border-color: #9b59b6;
 }
-
- /*form .category{*/
- /*  display: flex;*/
- /*  width: 80%;*/
- /*  margin: 14px 0 ;*/
- /*  justify-content: space-between;*/
- /*}*/
  form .category label{
    /*display: flex;*/
    /*align-items: center;*/

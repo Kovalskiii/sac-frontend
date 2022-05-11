@@ -1,49 +1,50 @@
 <!DOCTYPE html>
-<!-- Created By CodingLab - www.codinglabweb.com -->
+
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <!---<title> Responsive Registration Form | CodingLab </title>--->
-    <link rel="stylesheet" href="workers_style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="src/worker/workerUpdate.js"></script>
-   </head>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="workers_style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="src/worker/workerCreate.js"></script>
+</head>
+
 <body>
-  <div class="container">
-    <div class="title">Update Worker</div>
-    <div class="content">
-      <form action="#" id="worker-update-form">
-        <div class="user-details">
-          <div class="input-box">
-            <span class="details">First Name</span>
-            <input type="text" id="firstName" placeholder="First name" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Last Name</span>
-            <input type="text" id="lastName" placeholder="Last name" required>
-          </div>
-          <div id="laurentiu1" class="input-box1">
-            <span class="details"></span> <button id="getRfid">GET RFID data</button>
+<div class="container">
+  <div class="title">Worker Update</div>
+  <div class="content">
+    <form action="#" id="worker-create-form">
+      <div class="user-details">
+        <div class="input-box">
+          <label>Firstname<input type="text" id="firstName" placeholder="First name" required></label>
+          <label>Lastname<input type="text" id="lastName" placeholder="Last name" required></label>
+        </div>
+
+        <div class="input-box1">
+          <div class="input-btn">
+            <button type="button" id="getRfid">GET RFID data</button>
             <input type="text" id="rfid" placeholder="RFID Data" required>
           </div>
-          <div id="laurentiu2" class="input-box2">
-            <span class="details"></span> <button id="getFingerprint">GET Fingerprint data</button>
+          <div class="input-btn">
+            <button type="button" id="getFingerprint">GET Fingerprint data</button>
             <input type="text" id="fingerprint" placeholder="Fingerprint Data" required>
           </div>
-          <div id="laurentiu3" class="input-box3">
-            <span class="details"><input id="uploadImage" type="file"></span>
-          </div>
         </div>
-       
-        <div class="button">
-          <input type="submit" id="submit" value="Submit">
-          <input type="button" id="cancel" value="Cancel">
-          
+
+        <div class="input-box2">
+          <input id="uploadImage" type="file">
         </div>
-        <h6 style="color:orange">Note!During worker creation system is in the register mode!</h6>
-      </form>
-    </div>
+
+      </div>
+
+      <div class="button">
+        <button type="submit" id="submit">Submit</button>
+        <button type="button" id="cancel">Cancel</button>
+
+      </div>
+      <h6 style="color:orange">Note!During worker creation system is in the register mode!</h6>
+    </form>
   </div>
+</div>
 
 </body>
 </html>
