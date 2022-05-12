@@ -18,10 +18,22 @@ export const getWorkersList = () => {
           const workersListContainer = document.querySelector('.workers-list-container');
           //
           if (workerInfoArr) {
-            workersListContainer.innerHTML = '';
-            workerInfoArr.forEach(el => {
-              //
-              workersListContainer.innerHTML += `
+            workerListItem(workerInfoArr, workersListContainer);
+          }
+          else {
+            console.log(data.response.data.message)
+          }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+export const workerListItem = (workerInfoArr, workersListContainer) => {
+  workersListContainer.innerHTML = '';
+  workerInfoArr.forEach(el => {
+    //
+    workersListContainer.innerHTML += `
         <div class="workers-list-item">
             <div class="workers-list">
                 <div class="worker-photo-container">
@@ -43,30 +55,22 @@ export const getWorkersList = () => {
             </div>
             <hr>
         </div>`
-            })
-            //
-            const updateBtn = workersListContainer.querySelectorAll('#updateWorkerBtn');
-            const deleteBtn = workersListContainer.querySelectorAll('#deleteWorkerBtn');
+  })
+  //
+  const updateBtn = workersListContainer.querySelectorAll('#updateWorkerBtn');
+  const deleteBtn = workersListContainer.querySelectorAll('#deleteWorkerBtn');
 
-            for (let index in updateBtn) {
-              const workerData = {
-                photo: workerInfoArr[index].photo,
-                firstName: workerInfoArr[index].firstName,
-                lastName: workerInfoArr[index].lastName,
-                rfid: workerInfoArr[index].rfid,
-                fingerprintId: workerInfoArr[index].fingerprintId,
-                workerId: workerInfoArr[index].id
-              };
+  for (let index in updateBtn) {
+    const workerData = {
+      photo: workerInfoArr[index].photo,
+      firstName: workerInfoArr[index].firstName,
+      lastName: workerInfoArr[index].lastName,
+      rfid: workerInfoArr[index].rfid,
+      fingerprintId: workerInfoArr[index].fingerprintId,
+      workerId: workerInfoArr[index].id
+    };
 
-              updateBtn[index].addEventListener("click", () => workerUpdate(workerData));
-              deleteBtn[index].addEventListener("click", () => workerDelete(workerInfoArr[index].id));
-            }
-          }
-          else {
-            console.log(data.response.data.message)
-          }
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+    updateBtn[index].addEventListener("click", () => workerUpdate(workerData));
+    deleteBtn[index].addEventListener("click", () => workerDelete(workerInfoArr[index].id));
+  }
 }
