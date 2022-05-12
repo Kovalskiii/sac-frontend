@@ -47,7 +47,7 @@ const workerSearch = async (event) => {
             <div class="workers-list">
                 <div class="worker-photo-container">
                     <img src="${el.photo}"
-                         alt="Italian Trulli" width="120" height="150">
+                         alt="Italian Trulli">
                 </div>
 
                 <div class="worker-info-container">
@@ -58,8 +58,8 @@ const workerSearch = async (event) => {
                 </div> 
 
                 <div class="worker-btn-container">
-                    <button class="button" id="updateWorkerBtn">Update</button>
-                    <button class="button" href="#" id="deleteWorkerBtn">Delete</button>
+                    <button class="button" id="updateWorkerBtn" onclick="workerUpdate(el.id)">Update</button>
+                    <button class="button" id="deleteWorkerBtn" onclick="workerDelete(el.id)">Delete</button>
                 </div>
             </div>
             <hr>
@@ -79,17 +79,24 @@ const workerSearch = async (event) => {
   }
 }
 
-const updateBtn = document.querySelector('#updateWorkerBtn');
+const updateBtn = document.querySelectorAll('#updateWorkerBtn');
 
-if (updateBtn) {
-  deleteBtn.addEventListener('click', () => workerUpdate());
+// if (updateBtn) {
+//   updateBtn.addEventListener('click', (event) => workerUpdate(event));
+// }
+console.log(updateBtn)
+
+for (let i = 0; i < updateBtn.length; i++) {
+  updateBtn[i].addEventListener("click", () => workerUpdate());
 }
 
-const workerUpdate = async () => {
+export const workerUpdate = async () => {
+  console.log("blafgsdfad")
   //
   await queryWorkerSetRegisterMode()
     .then((data) => {
-      document.location='workerUpdate.html';
+      console.log(data);
+      //document.location='workerUpdate.html';
       console.log(data.message);
     })
     .catch((error) => {
@@ -97,21 +104,24 @@ const workerUpdate = async () => {
     });
 }
 
-const deleteBtn = document.querySelector('#deleteWorkerBtn');
-
-if (deleteBtn) {
-  deleteBtn.addEventListener('click', () => workerDelete());
-}
-
-const workerDelete = async () => {
-  const workerId = 0; //must be get from workers list
-
+export const workerDelete = async (workerId) => {
+  //
   const payload = {
     workerId: `${workerId}`,
   }
-  queryWorkerDeleteById(payload)
+
+  await queryWorkerDeleteById(payload)
     .then((data) => {
-      console.log(data.message);
+      if (data.payload) {
+        console.log(data.message);
+        document.querySelector('input[type="search"]').value = '';
+        getWorkersList();
+      }
+      else {
+        console.log(data.response.data.message);
+        document.querySelector('input[type="search"]').value = '';
+        getWorkersList();
+      }
     })
     .catch((error) => {
       console.log(error.response.data.message);
