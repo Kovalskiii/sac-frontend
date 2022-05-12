@@ -2,11 +2,11 @@
   "name": "sac-frontend",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview --port 8000"
   },
   "dependencies": {
     "axios": "^0.27.2",
