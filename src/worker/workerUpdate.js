@@ -7,6 +7,28 @@ import {
 import pkg from 'lodash';
 const { get } = pkg;
 
+document.addEventListener("DOMContentLoaded", () => getWorkersData());
+let workerData = {};
+
+const getWorkersData = () => {
+  workerData.firstName = localStorage.getItem('firstName');
+  workerData.lastName = localStorage.getItem('lastName');
+  workerData.rfid = localStorage.getItem('rfid');
+  workerData.fingerprintId = localStorage.getItem('fingerprintId');
+  workerData.workerId = localStorage.getItem('workerId');
+
+  localStorage.removeItem('firstName');
+  localStorage.removeItem('lastName');
+  localStorage.removeItem('rfid');
+  localStorage.removeItem('fingerprintId');
+  localStorage.removeItem('workerId');
+
+  document.querySelector('#firstName').value = workerData.firstName;
+  document.querySelector('#lastName').value = workerData.lastName;
+  document.querySelector('#rfid').value = workerData.rfid;
+  document.querySelector('#fingerprint').value = workerData.fingerprintId;
+}
+
 document.querySelector('#worker-update-form').addEventListener('submit', (e) => workerUpdateSubmit(e));
 
 const workerUpdateSubmit = (e) => {
@@ -18,10 +40,8 @@ const workerUpdateSubmit = (e) => {
   const rfid = document.querySelector('#rfid').value;
   const fingerprintId = document.querySelector('#fingerprint').value;
 
-  const workerId = '4G9l5sKuzzVLDq6kIvKs'; //must be get from workers list
-
   const payload = {
-    workerId: `${workerId}`,
+    workerId: `${workerData.workerId}`,
     data: {
       firstName: `${firstName}`,
       lastName: `${lastName}`,

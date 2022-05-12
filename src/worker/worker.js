@@ -47,7 +47,7 @@ const workerSearch = async (event) => {
             <div class="workers-list">
                 <div class="worker-photo-container">
                     <img src="${el.photo}"
-                         alt="Italian Trulli">
+                         alt="Worker photo">
                 </div>
 
                 <div class="worker-info-container">
@@ -58,13 +58,30 @@ const workerSearch = async (event) => {
                 </div> 
 
                 <div class="worker-btn-container">
-                    <button class="button" id="updateWorkerBtn" onclick="workerUpdate(el.id)">Update</button>
-                    <button class="button" id="deleteWorkerBtn" onclick="workerDelete(el.id)">Delete</button>
+                    <button class="button" id="updateWorkerBtn">Update</button>
+                    <button class="button" id="deleteWorkerBtn">Delete</button>
                 </div>
             </div>
             <hr>
         </div>`
           })
+          //
+          const updateBtn = workersListContainer.querySelectorAll('#updateWorkerBtn');
+          const deleteBtn = workersListContainer.querySelectorAll('#deleteWorkerBtn');
+
+          for (let index in updateBtn) {
+            const workerData = {
+              photo: workerInfoArr[index].photo,
+              firstName: workerInfoArr[index].firstName,
+              lastName: workerInfoArr[index].lastName,
+              rfid: workerInfoArr[index].rfid,
+              fingerprintId: workerInfoArr[index].fingerprintId,
+              workerId: workerInfoArr[index].id
+            };
+
+            updateBtn[index].addEventListener("click", () => workerUpdate(workerData));
+            deleteBtn[index].addEventListener("click", () => workerDelete(workerInfoArr[index].id));
+          }
         }
         else {
           console.log(data.response.data.message)
@@ -79,25 +96,22 @@ const workerSearch = async (event) => {
   }
 }
 
-const updateBtn = document.querySelectorAll('#updateWorkerBtn');
-
-// if (updateBtn) {
-//   updateBtn.addEventListener('click', (event) => workerUpdate(event));
-// }
-console.log(updateBtn)
-
-for (let i = 0; i < updateBtn.length; i++) {
-  updateBtn[i].addEventListener("click", () => workerUpdate());
-}
-
-export const workerUpdate = async () => {
-  console.log("blafgsdfad")
+export const workerUpdate = async (workerData) => {
   //
   await queryWorkerSetRegisterMode()
     .then((data) => {
-      console.log(data);
-      //document.location='workerUpdate.html';
-      console.log(data.message);
+      if (data.success) {
+        localStorage.setItem('firstName', workerData.firstName);
+        localStorage.setItem('lastName', workerData.lastName);
+        localStorage.setItem('rfid', workerData.rfid);
+        localStorage.setItem('fingerprintId', workerData.fingerprintId);
+        localStorage.setItem('workerId', workerData.workerId);
+
+        document.location='workerUpdate.html';
+      }
+      else {
+        console.log(data.response.data.message);
+      }
     })
     .catch((error) => {
       console.log(error.response.data.message);
@@ -112,15 +126,17 @@ export const workerDelete = async (workerId) => {
 
   await queryWorkerDeleteById(payload)
     .then((data) => {
-      if (data.payload) {
+      if (data.success) {
+        alert(data.message);
         console.log(data.message);
-        document.querySelector('input[type="search"]').value = '';
         getWorkersList();
+        document.querySelector('input[type="search"]').value = '';
       }
       else {
+        alert(data.response.data.message);
         console.log(data.response.data.message);
-        document.querySelector('input[type="search"]').value = '';
         getWorkersList();
+        document.querySelector('input[type="search"]').value = '';
       }
     })
     .catch((error) => {

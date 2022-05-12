@@ -1,11 +1,17 @@
-import { queryWorkerGetAllList } from "./queries.js";
+import { queryWorkerCancelRegisterMode, queryWorkerGetAllList } from "./queries.js";
 import { workerUpdate, workerDelete } from "./worker";
 
-
-// document.querySelector('.workers-list-container').addEventListener('load', () => getWorkersList());
 document.addEventListener("DOMContentLoaded", () => getWorkersList());
 
 export const getWorkersList = () => {
+  // queryWorkerCancelRegisterMode()
+  //   .then((data) => {
+  //     console.log(data.message);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error.response.data.message);
+  //   });
+
   queryWorkerGetAllList()
         .then((data) => {
           const workerInfoArr = data.payload;
@@ -14,22 +20,13 @@ export const getWorkersList = () => {
           if (workerInfoArr) {
             workersListContainer.innerHTML = '';
             workerInfoArr.forEach(el => {
-              const workerData = {
-                photo: el.photo,
-                firstName: el.firstName,
-                lastName: el.lastName,
-                rfid: el.rfid,
-                fingerprintId: el.fingerprintId,
-                workerId: el.id
-              };
-
+              //
               workersListContainer.innerHTML += `
-
         <div class="workers-list-item">
             <div class="workers-list">
                 <div class="worker-photo-container">
                     <img src="${el.photo}"
-                         alt="Italian Trulli">
+                         alt="Worker photo">
                 </div>
 
                 <div class="worker-info-container">
@@ -40,14 +37,30 @@ export const getWorkersList = () => {
                 </div> 
 
                 <div class="worker-btn-container">
-                    <button class="button" id="updateWorkerBtn" name="${el.id}">Update</button>
-                    <button class="button" id="deleteWorkerBtn" onclick="workerDelete(${el.id})">Delete</button> 
-<!--                    onclick="workerDelete(el.id)"-->
+                    <button class="button" id="updateWorkerBtn">Update</button>
+                    <button class="button" id="deleteWorkerBtn">Delete</button> 
                 </div>
             </div>
             <hr>
         </div>`
             })
+            //
+            const updateBtn = workersListContainer.querySelectorAll('#updateWorkerBtn');
+            const deleteBtn = workersListContainer.querySelectorAll('#deleteWorkerBtn');
+
+            for (let index in updateBtn) {
+              const workerData = {
+                photo: workerInfoArr[index].photo,
+                firstName: workerInfoArr[index].firstName,
+                lastName: workerInfoArr[index].lastName,
+                rfid: workerInfoArr[index].rfid,
+                fingerprintId: workerInfoArr[index].fingerprintId,
+                workerId: workerInfoArr[index].id
+              };
+
+              updateBtn[index].addEventListener("click", () => workerUpdate(workerData));
+              deleteBtn[index].addEventListener("click", () => workerDelete(workerInfoArr[index].id));
+            }
           }
           else {
             console.log(data.response.data.message)
