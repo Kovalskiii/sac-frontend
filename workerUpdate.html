@@ -3,8 +3,9 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="/workers_style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins'>
+  <link rel="stylesheet" href="/workers_style.css">
   <script type="module" src="/src/worker/workerUpdate.js"></script>
 </head>
 
@@ -30,18 +31,20 @@
           </div>
         </div>
 
-        <div class="input-box2">
-          <input id="uploadImage" type="file">
+        <div class="image-container">
+          <input id="uploadImage" type="file" accept="image/*" required>
+          <label for="uploadImage" id="uploadImageBtn">Select Image</label>
+          <span id="selectedImage">Image not selected</span>
         </div>
 
       </div>
 
-      <div class="button">
+      <div class="form-button">
         <button type="submit" id="submit">Submit</button>
         <button type="button" id="cancel">Cancel</button>
 
       </div>
-      <h6 style="color:orange">Note!During worker creation system is in the register mode!</h6>
+      <h6 id="note">Note! During worker creation system is in the register mode!</h6>
     </form>
   </div>
 </div>
